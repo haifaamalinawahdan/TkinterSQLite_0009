@@ -194,3 +194,23 @@ def prediksi_diabetes(gula, bmi, riwayat):
                 "Risiko Rendah (Normal)",
                   "#50fa7b"
             )
+
+# Menampilkan hasil prediksi
+var_hasil = tk.StringVar(value="-")
+
+tk.Label(
+    root,
+    text="Hasil Prediksi Risiko Diabetes:",
+    font=("Arial", 11, "bold")
+).grid(row=1, column=0, pady=(5, 0))
+
+label_hasil = tk.Label(
+    root,
+    textvariable=var_hasil,
+    font=("Arial", 16, "bold"),
+    fg="black",
+    relief=tk.RAISED,
+    width=22,
+    pady=8
+)
+label_hasil.grid(row=2, column=0, padx=15, pady=8)
