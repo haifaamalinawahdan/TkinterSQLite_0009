@@ -146,3 +146,51 @@ def read_form():
         return None
 
     return nama, usia, gula, bmi, riwayat
+
+# Menentukan prediksi risiko
+def prediksi_diabetes(gula, bmi, riwayat):
+
+    if gula >= 200:
+        if riwayat == "Ya":
+            return ("Risiko Sangat Tinggi (Indikasi Diabetes + Genetik)",
+                  "#ff5555",
+            )
+        else:
+            return (
+                 "Risiko Tinggi (Indikasi Diabetes)", 
+               "#ff5555"
+            )
+
+    elif 140 <= gula < 200:
+        if bmi >= 30 or riwayat == "Ya":
+            return (
+                "Risiko Tinggi (Prediabetes + Genetik/Obesitas)",
+                "#ffb86c"
+            )           
+        else:
+            return (
+                "Risiko Sedang (Prediabetes)",
+              "#ffb86c"
+            )
+    else:
+        if bmi >= 30:
+            if riwayat == "Ya":
+                return (
+                "Risiko Sedang (Normal + Obesitas & Genetik)",
+                "#f1fa8c",
+            )
+            else:
+                return (
+                    "Risiko Waspada (Normal + Obesitas)", 
+                    "#f1fa8c"
+                )
+        elif riwayat == "Ya":
+            return (
+                "Risko Waspada (Gula Normal + Riwayat Genetik)",
+                "#f1fa8c",
+            )
+        else:
+            return (
+                "Risiko Rendah (Normal)",
+                  "#50fa7b"
+            )
