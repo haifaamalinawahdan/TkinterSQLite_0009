@@ -42,3 +42,10 @@ def get_pasien():
         FROM pasien
         ORDER BY id DESC
     """)
+
+# Membuat window
+create_db()
+
+root = tk.Tk()
+root.title("Aplikasi Prediksi Risiko Diabetes")
+root.resizable(False, False)
