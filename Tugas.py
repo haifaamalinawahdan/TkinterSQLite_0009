@@ -33,3 +33,12 @@ def add_pasien(nama, usia, gula, bmi, riwayat, hasil):
          riwayat_ortu, hasil_prediksi)
         VALUES (?, ?, ?, ?, ?, ?)
     """, (nama, usia, gula, bmi, riwayat, hasil))
+
+# Mengambil seluruh data pasien
+def get_pasien():
+    return run_query("""
+        SELECT id, nama_pasien, usia, gula_darah,
+               bmi, riwayat_ortu, hasil_prediksi
+        FROM pasien
+        ORDER BY id DESC
+    """)
