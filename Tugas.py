@@ -49,3 +49,31 @@ create_db()
 root = tk.Tk()
 root.title("Aplikasi Prediksi Risiko Diabetes")
 root.resizable(False, False)
+
+# untuk input data pasien
+frame_input = tk.LabelFrame(
+    root,
+    text=" Data Pasien ",
+    padx=15,
+    pady=10
+)
+frame_input.grid(row=0, column=0, padx=15, pady=10)
+
+entries = {}
+
+fields = [
+    ("Nama Pasien", "nama"),
+    ("Usia", "usia"),
+    ("Gula Darah (mg/dL)", "gula"),
+    ("BMI", "bmi")
+]
+
+for i, (label, key) in enumerate(fields):
+    tk.Label(frame_input, text=label).grid(
+        row=i, column=0, sticky="w", padx=5, pady=5
+    )
+
+    entries[key] = tk.Entry(frame_input, width=25)
+    entries[key].grid(
+        row=i, column=1, padx=5, pady=5
+    )
