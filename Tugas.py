@@ -293,3 +293,23 @@ def lihat_data():
             "Informasi",
             "Belum ada data pasien yang tersimpan."
         )
+
+# membuat button
+btns = tk.Frame(root)
+btns.grid(row=3, column=0, pady=10)
+
+for text, cmd in [
+    ("Submit", on_submit),
+    ("Lihat Data", lihat_data),
+    ("Clear", clear_form)
+]:
+    tk.Button(
+        btns,
+        text=text,
+        width=12,
+        command=cmd
+    ).pack(side="left", padx=4)
+
+
+# Menjalankan aplikasi
+root.mainloop()
