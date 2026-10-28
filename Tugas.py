@@ -214,3 +214,37 @@ label_hasil = tk.Label(
     pady=8
 )
 label_hasil.grid(row=2, column=0, padx=15, pady=8)
+
+# fungsi untuk reset/clear form
+def clear_form():
+    for entry in entries.values():
+        entry.delete(0, tk.END)
+
+    riwayat_var.set("")
+    var_hasil.set("-")
+    label_hasil.config(fg="black")
+
+
+# fungsi untuk submit data pasien
+def on_submit():
+    data = read_form()
+
+    if data:
+        nama, usia, gula, bmi, riwayat = data
+
+        hasil, warna = prediksi_diabetes(
+            gula, bmi, riwayat
+        )
+
+        add_pasien(
+            nama, usia, gula, bmi, riwayat, hasil
+        )
+
+        var_hasil.set(hasil)
+        label_hasil.config(fg=warna)
+
+        messagebox.showinfo(
+            "Berhasil",
+            f"Data pasien berhasil disimpan!\n"
+            f"Hasil prediksi: {hasil}"
+        )
