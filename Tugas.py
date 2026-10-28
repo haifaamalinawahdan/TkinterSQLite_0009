@@ -248,3 +248,48 @@ def on_submit():
             f"Data pasien berhasil disimpan!\n"
             f"Hasil prediksi: {hasil}"
         )
+
+# membuat fungsi untuk menampilkan seluruh riwayat pasien
+def lihat_data():
+    data = get_pasien()
+
+    window = tk.Toplevel(root)
+    window.title("Riwayat Data Pasien")
+    window.geometry("900x300")
+
+    cols = (
+        "id", "nama_pasien", "usia", "gula_darah",
+        "bmi", "riwayat_ortu", "hasil_prediksi"
+    )
+
+    tree = ttk.Treeview(
+        window,
+        columns=cols,
+        show="headings"
+    )
+
+    judul = [
+        "ID", "Nama Pasien", "Usia",
+        "Gula Darah", "BMI", "Riwayat Ortu",
+        "Hasil Prediksi"
+    ]
+
+    for col, teks in zip(cols, judul):
+        tree.heading(col, text=teks)
+        tree.column(col, width=115, anchor="center")
+
+    for row in data:
+        tree.insert("", tk.END, values=row)
+
+    tree.pack(
+        fill="both",
+        expand=True,
+        padx=10,
+        pady=10
+    )
+
+    if not data:
+        messagebox.showinfo(
+            "Informasi",
+            "Belum ada data pasien yang tersimpan."
+        )
