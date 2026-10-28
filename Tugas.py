@@ -96,3 +96,53 @@ combo_riwayat = ttk.Combobox(
 combo_riwayat.grid(
     row=4, column=1, padx=5, pady=5
 )
+
+# Validasi input
+def read_form():
+    nama = entries["nama"].get().strip()
+    usia = entries["usia"].get().strip()
+    gula = entries["gula"].get().strip()
+    bmi = entries["bmi"].get().strip()
+    riwayat = riwayat_var.get()
+
+    if not nama or not usia or not gula or not bmi or not riwayat:
+        messagebox.showwarning(
+            "Data Kosong",
+            "Semua data pasien harus diisi!"
+        )
+        return None
+
+    try:
+        usia = int(usia)
+        gula = float(gula)
+        bmi = float(bmi)
+    except ValueError:
+        messagebox.showwarning(
+            "Input Tidak Valid",
+            "Usia harus bilangan bulat, sedangkan gula darah "
+            "dan BMI harus berupa angka."
+        )
+        return None
+
+    if not 1 <= usia <= 120:
+        messagebox.showwarning(
+            "Usia Tidak Valid",
+            "Usia harus antara 1 sampai 120 tahun."
+        )
+        return None
+
+    if not 0 < gula <= 600:
+        messagebox.showwarning(
+            "Gula Darah Tidak Valid",
+            "Gula darah harus lebih dari 0 dan maksimal 600 mg/dL."
+        )
+        return None
+
+    if not 10 <= bmi <= 80:
+        messagebox.showwarning(
+            "BMI Tidak Valid",
+            "BMI harus antara 10 sampai 80."
+        )
+        return None
+
+    return nama, usia, gula, bmi, riwayat
