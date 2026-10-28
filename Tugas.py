@@ -77,3 +77,22 @@ for i, (label, key) in enumerate(fields):
     entries[key].grid(
         row=i, column=1, padx=5, pady=5
     )
+
+
+tk.Label(
+    frame_input,
+    text="Riwayat Diabetes Orang Tua"
+).grid(row=4, column=0, sticky="w", padx=5, pady=5)
+
+riwayat_var = tk.StringVar()
+
+combo_riwayat = ttk.Combobox(
+    frame_input,
+    textvariable=riwayat_var,
+    values=("Ya", "Tidak"),
+    state="readonly",
+    width=22
+)
+combo_riwayat.grid(
+    row=4, column=1, padx=5, pady=5
+)
