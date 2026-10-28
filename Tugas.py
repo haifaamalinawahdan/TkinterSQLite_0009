@@ -24,3 +24,12 @@ def create_db():
         riwayat_ortu TEXT NOT NULL,
         hasil_prediksi TEXT NOT NULL
     )""")
+
+# fungsi untuk menambahkan data pasien
+def add_pasien(nama, usia, gula, bmi, riwayat, hasil):
+    run_query("""
+        INSERT INTO pasien
+        (nama_pasien, usia, gula_darah, bmi,
+         riwayat_ortu, hasil_prediksi)
+        VALUES (?, ?, ?, ?, ?, ?)
+    """, (nama, usia, gula, bmi, riwayat, hasil))
